@@ -86,7 +86,10 @@ public class UIPresetAnimator : MonoBehaviour, IPointerClickHandler, IPointerEnt
             case PresetType.FadeInScale:
                 transform.localScale = Vector3.zero;
                 canvasGroup.alpha = 0;
-                transform.DOScale(1f, duration).SetEase(ease).SetDelay(delay);
+                transform.DOScale(1f, duration).SetEase(ease).SetDelay(delay).OnComplete(() =>
+                {
+                    onComplete.Invoke();
+                });
                 return canvasGroup.DOFade(1, duration).SetEase(ease).SetDelay(delay);
 
             case PresetType.ScalePop:
