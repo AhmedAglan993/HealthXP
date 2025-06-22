@@ -5,14 +5,15 @@ public class UIScreen : MonoBehaviour, IScreen
 {
     [SerializeField] protected CanvasGroup canvasGroup;
     [SerializeField] public bool isHomeScreen;
+    [SerializeField] public bool isSplash;
+    public ScreenId screenId;
 
-    public bool IsVisible => canvasGroup.alpha > 0;
 
-    public virtual void Show()
+    public void Show()
     {
         gameObject.SetActive(true);
     }
-    public virtual void Hide()
+    public void Hide()
     {
         gameObject.SetActive(false);
     }

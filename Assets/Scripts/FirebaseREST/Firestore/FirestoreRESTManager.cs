@@ -6,28 +6,47 @@ using UnityEngine.Networking;
 
 public static class FirestoreRESTManager
 {
-    private const string ProjectId = "lifestyleloop";
+    private const string BaseUrl = "https://firestore.googleapis.com/v1/";
+    private const string ProjectId = "lifestyleloop"; // Replace with your Firebase Project ID
 
-    public static IEnumerator GetDocument(string collection, string docId, string idToken, System.Action<string> onSuccess, System.Action<string> onError)
+    public static IEnumerator GetDocument(
+        string documentPath,
+        string idToken,
+        Action<string> onSuccess,
+        Action<string> onError)
     {
-        string url = $"https://firestore.googleapis.com/v1/projects/{ProjectId}/databases/(default)/documents/{collection}/{docId}?access_token={idToken}";
+        string url = $"{BaseUrl}projects/{ProjectId}/databases/(default)/documents/{documentPath}";
 
-        UnityWebRequest req = UnityWebRequest.Get(url);
-        yield return req.SendWebRequest();
+        UnityWebRequest request = UnityWebRequest.Get(url);
+        request.SetRequestHeader("Authorization", $"Bearer {idToken}");
 
-        if (req.result == UnityWebRequest.Result.Success)
-            onSuccess?.Invoke(req.downloadHandler.text);
+        yield return request.SendWebRequest();
+
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.LogError("❌ Firestore get failed: " + request.downloadHandler.text);
+            onError?.Invoke(request.downloadHandler.text);
+        }
         else
-            onError?.Invoke(req.error);
+        {
+            string resultJson = request.downloadHandler.text;
+            Debug.Log("📄 Firestore document fetched successfully.");
+            onSuccess?.Invoke(resultJson);
+        }
     }
 
-    public static IEnumerator SaveDocument(string docPath, string jsonBody, string idToken, Action onSuccess, Action<string> onError)
+    public static IEnumerator SaveDocument(
+        string documentPath,
+        string jsonBody,
+        string idToken,
+        Action onSuccess,
+        Action<string> onError)
     {
-        string url = $"https://firestore.googleapis.com/v1/projects/{ProjectId}/databases/(default)/documents/{docPath}";
+        string projectId = "lifestyleloop"; // Replace with your actual Firebase project ID
+        string url = $"{BaseUrl}projects/{projectId}/databases/(default)/documents/{documentPath}?currentDocument.exists=false";
 
-        UnityWebRequest request = new UnityWebRequest(url, "PATCH");
-        byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonBody);
-
+        var request = new UnityWebRequest(url, "PATCH");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonBody);
         request.uploadHandler = new UploadHandlerRaw(bodyRaw);
         request.downloadHandler = new DownloadHandlerBuffer();
 
@@ -36,13 +55,15 @@ public static class FirestoreRESTManager
 
         yield return request.SendWebRequest();
 
-        if (request.result == UnityWebRequest.Result.Success)
+        if (request.result != UnityWebRequest.Result.Success)
         {
-            onSuccess?.Invoke();
+            Debug.LogError("❌ Firestore save failed: " + request.downloadHandler.text);
+            onError?.Invoke(request.downloadHandler.text);
         }
         else
         {
-            onError?.Invoke($"{request.responseCode} - {request.downloadHandler.text}");
+            Debug.Log("✅ Firestore save successful");
+            onSuccess?.Invoke();
         }
     }
 

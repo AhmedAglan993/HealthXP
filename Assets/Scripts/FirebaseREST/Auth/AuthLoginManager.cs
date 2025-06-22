@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AuthLoginManager : MonoBehaviour
 {
     public static AuthLoginManager Instance { get; private set; }
-    public FirebaseUserData CurrentUser { get; private set; }
-
+    public FirebaseUserData CurrentUser;
     public event Action<FirebaseUserData> OnLoginSuccess;
     public event Action<string> OnLoginError;
-
-    private IAuthProvider authProvider;
     private ITokenCacheService tokenCache;
 
     private void Awake()
@@ -27,25 +25,20 @@ public class AuthLoginManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private void Start()
+    public void AutoLoginWithCashedUser()
     {
         StartCoroutine(InitializeSession());
     }
 
-    public void SetAuthProvider(IAuthProvider provider)
-    {
-        authProvider = provider;
-    }
 
     public void LoginWithProvider(IAuthProvider provider)
     {
-        SetAuthProvider(provider);
         StartCoroutine(HandleLogin(provider));
     }
 
     private IEnumerator HandleLogin(IAuthProvider provider)
     {
+        LoadingManager.Service.Show("Logining In");
         yield return provider.SignIn(
             user =>
             {
@@ -53,11 +46,16 @@ public class AuthLoginManager : MonoBehaviour
                 tokenCache.SaveUser(user);
                 Debug.Log("✅ Logged in: " + user.localId);
                 OnLoginSuccess?.Invoke(user);
+                ToastManager.Instance.ShowToast("Signed In Successfully!", ToastData.ToastType.Success);
+                LoadingManager.Service.Hide();
+                UserSessionManager.Instance.OnLoginSuccess(user);
             },
             error =>
             {
                 Debug.LogError("❌ Login error: " + error);
+                ToastManager.Instance.ShowToast("❌ Login error!", ToastData.ToastType.Error);
                 OnLoginError?.Invoke(error);
+                LoadingManager.Service.Hide();
             });
     }
 
@@ -66,6 +64,7 @@ public class AuthLoginManager : MonoBehaviour
         if (!tokenCache.HasCachedUser())
         {
             Debug.Log("🔁 No cached user found. Awaiting login.");
+            ScreenNavigator.Instance.NavigateTo(ScreenId.RoleSelection);
             yield break;
         }
 
@@ -81,6 +80,7 @@ public class AuthLoginManager : MonoBehaviour
                 Debug.Log("♻️ Token refreshed");
                 OnLoginSuccess?.Invoke(refreshed);
                 ToastManager.Instance.ShowToast("Signed In Successfully!", ToastData.ToastType.Success);
+                UserSessionManager.Instance.OnLoginSuccess(CurrentUser);
             },
             error =>
             {
