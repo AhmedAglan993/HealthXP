@@ -28,6 +28,7 @@ public class AddPlanScreenUI : MonoBehaviour
     void OpenPreview()
     {
         var plan = PlanBuilder.BuildMealPlanFromUI(this);
+        // to add open preview popup here
         previewScreen.GetComponent<PlanPreviewUI>().ShowPreview(plan);
     }
 }

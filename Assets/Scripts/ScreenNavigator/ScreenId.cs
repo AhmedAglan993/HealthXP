@@ -9,7 +9,8 @@ public enum ScreenId
     UserDashboard,
     DoctorDashboard,
     ProfileSetup,
-    PlanOverview,
+    AddNewPlan,
+
     
 
     // Popups
