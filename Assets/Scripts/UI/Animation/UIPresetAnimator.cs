@@ -231,7 +231,10 @@ public class UIPresetAnimator : MonoBehaviour, IPointerClickHandler, IPointerEnt
         var original = rect.anchoredPosition;
         rect.anchoredPosition = original + dir * 300f;
         canvasGroup.alpha = 0;
-        rect.DOAnchorPos(original, duration).SetEase(ease).SetDelay(delay);
+        rect.DOAnchorPos(original, duration).SetEase(ease).SetDelay(delay).OnComplete(() =>
+        {
+            onComplete.Invoke();
+        });
         return canvasGroup.DOFade(1, duration).SetEase(ease).SetDelay(delay);
     }
     private Tween LogoIntroToCurrentPosition(RectTransform rect, float duration, Ease ease, float delay = 0f)
