@@ -15,7 +15,14 @@ public class DayCardUI : MonoBehaviour
         addMealButton.onClick.AddListener(() =>
         {
             var meal = Instantiate(mealCardPrefab, mealContainer);
-            meal.SetupMeal();
+            MealEntry sampleMeal = new MealEntry()
+            {
+                mealType = "Breakfast",
+                mealName = "greek yougurt",
+                macros = "",
+                recipe = ""
+            };
+            meal.SetupMeal(sampleMeal);
         });
     }
 
