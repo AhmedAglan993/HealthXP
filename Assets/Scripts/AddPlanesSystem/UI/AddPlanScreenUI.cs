@@ -1,34 +1,28 @@
-using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class AddPlanScreenUI : MonoBehaviour
+public class AddPlanManager : MonoBehaviour
 {
-    [Header("UI References")]
-    public TMP_InputField planTitleInput;
-    public TMP_InputField startDateInput;
-    public Button addDayButton;
-    public Transform daysContainer;
-    public DayCardUI dayCardPrefab;
-    public Button previewButton;
-    public GameObject previewScreen;
+    public Transform dayCardsParent;
+    public GameObject dayCardPrefab;
 
-    private void Start()
+    private List<DayCardUI> dayCards = new();
+
+    public void AddDay()
     {
-        addDayButton.onClick.AddListener(AddNewDay);
-        previewButton.onClick.AddListener(OpenPreview);
+        var go = Instantiate(dayCardPrefab, dayCardsParent);
+        var card = go.GetComponent<DayCardUI>();
+        card.SetupDay();
+        dayCards.Add(card);
     }
 
-    void AddNewDay()
+    public void PreviewPlan()
     {
-        var newDay = Instantiate(dayCardPrefab, daysContainer);
-        newDay.SetupDay("Day " + (daysContainer.childCount));
-    }
-
-    void OpenPreview()
-    {
-        var plan = PlanBuilder.BuildMealPlanFromUI(this);
-        // to add open preview popup here
-        previewScreen.GetComponent<PlanPreviewUI>().ShowPreview(plan);
+        List<PlanDay> days = new();
+        foreach (var day in dayCards)
+        {
+            days.Add(day.GetDayPlan());
+        }
+        PlanPreviewManager.Instance.ShowPreview(days);
     }
 }

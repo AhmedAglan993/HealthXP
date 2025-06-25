@@ -1,0 +1,62 @@
+{"meals":[
+  {
+    "mealType": "Breakfast",
+    "mealName": "Oatmeal with Banana",
+    "macros": "Protein: 10g, Carbs: 45g, Fats: 5g",
+    "recipe": "Cook oats with milk. Top with sliced banana and honey."
+  },
+  {
+    "mealType": "Lunch",
+    "mealName": "Grilled Chicken Salad",
+    "macros": "Protein: 35g, Carbs: 15g, Fats: 12g",
+    "recipe": "Mix greens, tomatoes, cucumbers with grilled chicken and vinaigrette."
+  },
+  {
+    "mealType": "Dinner",
+    "mealName": "Baked Salmon with Quinoa",
+    "macros": "Protein: 40g, Carbs: 30g, Fats: 18g",
+    "recipe": "Bake salmon fillet and serve with steamed quinoa and broccoli."
+  },
+  {
+    "mealType": "Snack",
+    "mealName": "Greek Yogurt with Berries",
+    "macros": "Protein: 12g, Carbs: 18g, Fats: 4g",
+    "recipe": "Top yogurt with fresh berries and a sprinkle of chia seeds."
+  },
+  {
+    "mealType": "Snack",
+    "mealName": "Peanut Butter Rice Cakes",
+    "macros": "Protein: 8g, Carbs: 20g, Fats: 10g",
+    "recipe": "Spread peanut butter on rice cakes, optionally add banana slices."
+  },
+  {
+    "mealType": "Lunch",
+    "mealName": "Tuna Sandwich",
+    "macros": "Protein: 30g, Carbs: 35g, Fats: 15g",
+    "recipe": "Mix tuna with light mayo, serve on whole grain bread with lettuce."
+  },
+  {
+    "mealType": "Dinner",
+    "mealName": "Vegetable Stir Fry with Tofu",
+    "macros": "Protein: 25g, Carbs: 40g, Fats: 10g",
+    "recipe": "Stir-fry tofu with mixed vegetables and soy sauce over brown rice."
+  },
+  {
+    "mealType": "Breakfast",
+    "mealName": "Avocado Toast with Egg",
+    "macros": "Protein: 15g, Carbs: 20g, Fats: 18g",
+    "recipe": "Toast whole grain bread, top with mashed avocado and poached egg."
+  },
+  {
+    "mealType": "Snack",
+    "mealName": "Protein Shake",
+    "macros": "Protein: 25g, Carbs: 5g, Fats: 2g",
+    "recipe": "Blend 1 scoop protein powder with almond milk and ice."
+  },
+  {
+    "mealType": "Dinner",
+    "mealName": "Chicken and Sweet Potato",
+    "macros": "Protein: 35g, Carbs: 40g, Fats: 10g",
+    "recipe": "Grill chicken breast and serve with roasted sweet potato and spinach."
+  }
+]}

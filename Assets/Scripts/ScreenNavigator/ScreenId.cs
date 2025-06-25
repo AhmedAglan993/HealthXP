@@ -21,5 +21,6 @@ public enum popupId
     EmailVerificationPopup,
     PasswordResetPopup,
     ErrorPopup,
-    ToastMessage
+    ToastMessage,
+    AddMealPopUp
 }

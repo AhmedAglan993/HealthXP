@@ -1,50 +1,64 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class MealCardUI : MonoBehaviour
 {
-    [Header("Meal Input Fields")]
     public TMP_Dropdown mealTypeDropdown;
     public TMP_InputField mealNameInput;
     public TMP_InputField macrosInput;
     public TMP_InputField recipeInput;
 
-    // Setup the UI with an existing MealEntry (for editing or template preview)
-    public void SetupMeal(MealEntry meal)
-    {
-        // Set meal type dropdown index based on value
-        int typeIndex = mealTypeDropdown.options.FindIndex(option => option.text == meal.mealType);
-        mealTypeDropdown.value = typeIndex >= 0 ? typeIndex : 0;
+    public GameObject suggestionContainer,suggestionParent;
+    public GameObject suggestionItemPrefab;
+    public SmartMealSuggester suggester;
 
-        // Fill other input fields
-        mealNameInput.text = meal.mealName;
-        macrosInput.text = meal.macros;
-        recipeInput.text = meal.recipe;
+    private void Start()
+    {
+        suggester.OnSuggestionsUpdated += RenderSuggestions;
+
+        mealNameInput.onValueChanged.AddListener(suggester.FilterSuggestions);
+        mealNameInput.onSelect.AddListener(_ => suggester.FilterSuggestions(mealNameInput.text));
+    }
+    public void SetupMeal()
+    {
+
+    }
+    private void RenderSuggestions(List<MealEntry> suggestions)
+    {
+        foreach (Transform child in suggestionParent.transform)
+            Destroy(child.gameObject);
+
+        foreach (var suggestion in suggestions)
+        {
+            var item = Instantiate(suggestionItemPrefab, suggestionParent.transform);
+            item.GetComponentInChildren<TMP_Text>().text = suggestion.mealName;
+            item.GetComponent<Button>().onClick.AddListener(() => OnSuggestionClicked(suggestion));
+        }
+
+        suggestionContainer.SetActive(suggestions.Count > 0);
     }
 
-    // Extract meal from UI
+    private void OnSuggestionClicked(MealEntry suggestion)
+    {
+        mealNameInput.text = suggestion.mealName;
+        macrosInput.text = suggestion.macros;
+        recipeInput.text = suggestion.recipe;
+        suggestionContainer.SetActive(false);
+    }
+    public void SaveMealToDayMeals()
+    {
+
+    }
     public MealEntry GetMeal()
     {
         return new MealEntry
         {
             mealType = mealTypeDropdown.options[mealTypeDropdown.value].text,
-            mealName = mealNameInput.text.Trim(),
-            macros = macrosInput.text.Trim(),
-            recipe = recipeInput.text.Trim()
+            mealName = mealNameInput.text,
+            macros = macrosInput.text,
+            recipe = recipeInput.text
         };
-    }
-
-    // Optional: validate inputs
-    public bool IsValidMeal(out string error)
-    {
-        error = "";
-        if (string.IsNullOrWhiteSpace(mealNameInput.text))
-            error = "Meal name is required.";
-        else if (string.IsNullOrWhiteSpace(macrosInput.text))
-            error = "Macros are required.";
-        else if (string.IsNullOrWhiteSpace(recipeInput.text))
-            error = "Recipe is required.";
-
-        return string.IsNullOrEmpty(error);
     }
 }

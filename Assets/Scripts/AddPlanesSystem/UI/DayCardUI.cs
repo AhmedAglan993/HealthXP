@@ -1,38 +1,30 @@
-using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DayCardUI : MonoBehaviour
 {
-    public TMP_Text dayLabel;
-    public Button addMealButton;
-    public Transform mealContainer;
-    public MealCardUI mealCardPrefab;
+    public Transform mealCardContainer;
+    public GameObject mealCardPrefab;
 
-    public void SetupDay(string label)
+    private List<MealCardUI> mealCards = new();
+
+    public void SetupDay() => AddMeal();
+
+    public void AddMeal()
     {
-        dayLabel.text = label;
-        addMealButton.onClick.AddListener(() =>
-        {
-            var meal = Instantiate(mealCardPrefab, mealContainer);
-            MealEntry sampleMeal = new MealEntry()
-            {
-                mealType = "Breakfast",
-                mealName = "greek yougurt",
-                macros = "",
-                recipe = ""
-            };
-            meal.SetupMeal(sampleMeal);
-        });
+        var go = Instantiate(mealCardPrefab, mealCardContainer);
+        var card = go.GetComponent<MealCardUI>();
+        card.SetupMeal();
+        mealCards.Add(card);
     }
 
-    public MealEntry[] GetMeals()
+    public PlanDay GetDayPlan()
     {
-        var entries = new MealEntry[mealContainer.childCount];
-        for (int i = 0; i < mealContainer.childCount; i++)
+        var plan = new PlanDay { meals = new List<MealEntry>() };
+        foreach (var card in mealCards)
         {
-            entries[i] = mealContainer.GetChild(i).GetComponent<MealCardUI>().GetMeal();
+            plan.meals.Add(card.GetMeal());
         }
-        return entries;
+        return plan;
     }
 }

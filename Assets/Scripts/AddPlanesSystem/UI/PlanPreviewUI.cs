@@ -23,11 +23,16 @@ public class PlanPreviewUI : MonoBehaviour
 
     public void ConfirmPlan()
     {
-        var token = FirebaseAuthManager.Instance.CurrentUser.idToken;
+        var user = FirebaseAuthManager.Instance.CurrentUser;
         var service = new FirestorePlanService();
-        StartCoroutine(service.SavePlan(currentPlan, token,
-            () => Debug.Log("✅ Plan saved!"),
-            err => Debug.LogError("❌ Failed to save: " + err)
+
+        StartCoroutine(service.SavePlan(
+            user.localId,                       // ✅ userId
+            user.idToken,                       // ✅ token
+            currentPlan.days,                        // ✅ the actual plan
+            () => Debug.Log("✅ Plan saved!"),  // ✅ onSuccess
+            err => Debug.LogError("❌ Failed to save: " + err) // ✅ onError
         ));
     }
+
 }
