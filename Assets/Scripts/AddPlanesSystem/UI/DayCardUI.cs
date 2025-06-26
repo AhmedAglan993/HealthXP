@@ -1,30 +1,51 @@
+﻿using Ricimi;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DayCardUI : MonoBehaviour
 {
-    public Transform mealCardContainer;
-    public GameObject mealCardPrefab;
+    public Transform mealButtonParent;
+    public MealCardButton mealButtonPrefab;
+    public CleanButton addMealButton;
+    public TextMeshProUGUI title;
 
-    private List<MealCardUI> mealCards = new();
+    private List<MealEntry> dayMeals = new();
 
-    public void SetupDay() => AddMeal();
-
-    public void AddMeal()
+    public void AddMeal(MealEntry meal)
     {
-        var go = Instantiate(mealCardPrefab, mealCardContainer);
-        var card = go.GetComponent<MealCardUI>();
-        card.SetupMeal();
-        mealCards.Add(card);
+        dayMeals.Add(meal);
     }
-
-    public PlanDay GetDayPlan()
+    private void Start()
     {
-        var plan = new PlanDay { meals = new List<MealEntry>() };
-        foreach (var card in mealCards)
+        addMealButton.onClick.AddListener(OpenAddMealPopup);
+
+    }
+    public PlanDay ToDayPlan()
+    {
+        return new PlanDay
         {
-            plan.meals.Add(card.GetMeal());
-        }
-        return plan;
+            label = title.text,
+            meals = new List<MealEntry>(dayMeals)
+        };
     }
+    MealCardButton currentMealCardButton;
+    private void CreateMealButton(MealEntry meal)
+    {
+        currentMealCardButton = Instantiate(mealButtonPrefab, mealButtonParent);
+        currentMealCardButton.GetComponent<CleanButton>().onClick.AddListener(() =>
+        {
+            MealCardUI.Instance.SetupMeal(currentMealCardButton, this, meal);
+            ScreenNavigator.Instance.ShowPopup(popupId.AddMealPopUp);
+        });
+    }
+    // From DayCardUI.cs
+    public void OpenAddMealPopup()
+    {
+        ScreenNavigator.Instance.ShowPopup(popupId.AddMealPopUp);
+        CreateMealButton(new MealEntry());
+        MealCardUI.Instance.SetupMeal(currentMealCardButton, this);
+    }
+   
 }

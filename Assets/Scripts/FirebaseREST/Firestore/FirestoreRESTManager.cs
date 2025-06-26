@@ -10,61 +10,70 @@ public static class FirestoreRESTManager
     private const string ProjectId = "lifestyleloop"; // Replace with your Firebase Project ID
 
     public static IEnumerator GetDocument(
-        string documentPath,
-        string idToken,
-        Action<string> onSuccess,
-        Action<string> onError)
+    string documentPath,      // e.g., "users/userId/plan"
+    string idToken,
+    Action<string> onSuccess,
+    Action<string> onError)
     {
-        string url = $"{BaseUrl}projects/{ProjectId}/databases/(default)/documents/{documentPath}";
+        // Firebase Realtime Database base URL (adjust to your actual DB URL)
+        string baseUrl = "https://lifestyleloop-default-rtdb.firebaseio.com/"; // Ensure trailing slash
+
+        // Build the full URL
+        string url = $"{baseUrl}{documentPath}.json?auth={idToken}";
 
         UnityWebRequest request = UnityWebRequest.Get(url);
-        request.SetRequestHeader("Authorization", $"Bearer {idToken}");
-
+        LoadingManager.Service.Show();
         yield return request.SendWebRequest();
 
         if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.LogError("❌ Firestore get failed: " + request.downloadHandler.text);
+            Debug.LogError("❌ Realtime DB get failed: " + request.downloadHandler.text);
             onError?.Invoke(request.downloadHandler.text);
         }
         else
         {
             string resultJson = request.downloadHandler.text;
-            Debug.Log("📄 Firestore document fetched successfully.");
+            Debug.Log("📄 Realtime DB document fetched successfully.");
             onSuccess?.Invoke(resultJson);
+            LoadingManager.Service.Hide();
         }
     }
 
-    public static IEnumerator SaveDocument(
-        string documentPath,
-        string jsonBody,
-        string idToken,
-        Action onSuccess,
-        Action<string> onError)
-    {
-        string projectId = "lifestyleloop"; // Replace with your actual Firebase project ID
-        string url = $"{BaseUrl}projects/{projectId}/databases/(default)/documents/{documentPath}?currentDocument.exists=false";
 
-        var request = new UnityWebRequest(url, "PATCH");
-        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonBody);
+    public static IEnumerator SaveDocument(
+     string documentPath,        // e.g., "users/user123/plans/plan_456"
+     string jsonBody,            // should be valid raw JSON string (already formatted)
+     string idToken,             // Firebase user ID token
+     Action onSuccess,
+     Action<string> onError)
+    {
+        string baseUrl = "https://lifestyleloop-default-rtdb.firebaseio.com/";
+
+        // Realtime Database requires ".json" at the end
+        string url = $"{baseUrl}{documentPath}.json?auth={idToken}";
+
+        var request = new UnityWebRequest(url, "PUT"); // PUT = Replace/Save
+        byte[] bodyRaw = Encoding.UTF8.GetBytes(jsonBody);
         request.uploadHandler = new UploadHandlerRaw(bodyRaw);
         request.downloadHandler = new DownloadHandlerBuffer();
-
-        request.SetRequestHeader("Authorization", $"Bearer {idToken}");
+        LoadingManager.Service.Show();
         request.SetRequestHeader("Content-Type", "application/json");
 
         yield return request.SendWebRequest();
 
         if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.LogError("❌ Firestore save failed: " + request.downloadHandler.text);
+            Debug.LogError("❌ Realtime DB save failed: " + request.downloadHandler.text);
             onError?.Invoke(request.downloadHandler.text);
         }
         else
         {
-            Debug.Log("✅ Firestore save successful");
+            Debug.Log("✅ Realtime DB save successful");
             onSuccess?.Invoke();
+            LoadingManager.Service.Hide();
+
         }
     }
+
 
 }

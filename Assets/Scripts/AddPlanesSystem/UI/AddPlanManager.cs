@@ -1,3 +1,4 @@
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,24 +6,21 @@ public class AddPlanManager : MonoBehaviour
 {
     public Transform dayCardsParent;
     public GameObject dayCardPrefab;
-
-    private List<DayCardUI> dayCards = new();
+    public static event Action OnDayCardsChanged;
+    public List<DayCardUI> dayCards = new();
 
     public void AddDay()
     {
         var go = Instantiate(dayCardPrefab, dayCardsParent);
         var card = go.GetComponent<DayCardUI>();
-        card.SetupDay();
         dayCards.Add(card);
+        card.title.text = "Day " + dayCards.Count;
+        OnDayCardsChanged.Invoke();
     }
-
-    public void PreviewPlan()
+    public void ResetPlans()
     {
-        List<PlanDay> days = new();
-        foreach (var day in dayCards)
-        {
-            days.Add(day.GetDayPlan());
-        }
-        PlanPreviewManager.Instance.ShowPreview(days);
+        foreach (Transform child in dayCardsParent.transform)
+            Destroy(child.gameObject);
+
     }
 }
