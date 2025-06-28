@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlanPreviewManager : MonoBehaviour
 {
     public CleanButton confirmButton;
+    public TMP_InputField titleField;
     public AddPlanManager AddPlanManager;
     private void Awake()
     {
@@ -34,7 +35,7 @@ public class PlanPreviewManager : MonoBehaviour
         MealPlan plan = new MealPlan
         {
             userId = user.localId,
-            title = "My Plan",
+            title = titleField.text,
             days = new List<PlanDay>()
         };
 

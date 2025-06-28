@@ -15,8 +15,8 @@ public class ViewPlansManager : MonoBehaviour
 
     private IEnumerator LoadPlans()
     {
-        string uid = FirebaseAuthManager.Instance.CurrentUser.localId;
-        string token = FirebaseAuthManager.Instance.CurrentUser.idToken;
+        string uid = AuthLoginManager.Instance.CurrentUser.localId;
+        string token = AuthLoginManager.Instance.CurrentUser.idToken;
 
         var service = new FirestorePlanService();
 

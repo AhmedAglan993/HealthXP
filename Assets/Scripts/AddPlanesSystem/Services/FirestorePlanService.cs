@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
@@ -14,7 +15,7 @@ public class FirestorePlanService : MonoBehaviour
         {
             print(meal.days[i].meals.Count);
         }
-        string json = BuildPlanJson(meal.days);
+        string json = JsonConvert.SerializeObject(meal);
         print(json);
         yield return FirestoreRESTManager.SaveDocument(docPath, json, token, onSuccess, onError);
     }
@@ -40,13 +41,14 @@ public class FirestorePlanService : MonoBehaviour
 
         try
         {
-            var dict = JsonUtility.FromJson<MealPlanWrapper>($"{{\"plans\":{rawJson}}}");
-            foreach (var planEntry in dict.plans)
+            var planDict = JsonConvert.DeserializeObject<Dictionary<string, MealPlan>>(rawJson); onSuccess?.Invoke(parsedPlans);
+            foreach (var pair in planDict)
             {
-                parsedPlans.Add(planEntry.Value);
+                pair.Value.planId = pair.Key; // set planId manually
+                parsedPlans.Add(pair.Value);
             }
-
-            onSuccess?.Invoke(parsedPlans);
+            onSuccess.Invoke(parsedPlans);
+            print(parsedPlans.Count);
         }
         catch (Exception e)
         {
@@ -55,21 +57,5 @@ public class FirestorePlanService : MonoBehaviour
         }
     }
 
-    [Serializable]
-    public class MealPlanWrapper
-    {
-        public Dictionary<string, MealPlan> plans;
-    }
 
-    private string BuildPlanJson(List<PlanDay> plan)
-    {
-        // You can expand this to serialize the plan better
-        return JsonUtility.ToJson(new Wrapper { plan = plan });
-    }
-
-    [System.Serializable]
-    private class Wrapper
-    {
-        public List<PlanDay> plan;
-    }
 }

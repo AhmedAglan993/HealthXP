@@ -1,12 +1,11 @@
-﻿using TMPro;
+﻿using Ricimi;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlanCardUI : MonoBehaviour
 {
     public TMP_Text titleText;
-    public TMP_Text dateText;
-    public Button openButton;
 
     private MealPlan currentPlan;
 
@@ -15,7 +14,7 @@ public class PlanCardUI : MonoBehaviour
         currentPlan = plan;
         titleText.text = plan.title;
 
-        openButton.onClick.AddListener(() => OpenPlanDetail());
+        GetComponent<CleanButton>().onClick.AddListener(() => OpenPlanDetail());
     }
 
     private void OpenPlanDetail()
@@ -23,6 +22,6 @@ public class PlanCardUI : MonoBehaviour
         // Option: pass to a plan viewer screen
         Debug.Log("📋 Open plan: " + currentPlan.title);
         // Store in session, or use navigation with params
-        ScreenNavigator.Instance.NavigateTo(ScreenId.AddNewPlan);
+        ScreenNavigator.Instance.ShowPopup(popupId.PlanDetails);
     }
 }
