@@ -22,6 +22,7 @@ public class PlanCardUI : MonoBehaviour
         // Option: pass to a plan viewer screen
         Debug.Log("📋 Open plan: " + currentPlan.title);
         // Store in session, or use navigation with params
-        ScreenNavigator.Instance.ShowPopup(popupId.PlanDetails);
+        PlanDetailsManager.Instance.Setup(currentPlan);
+        ScreenNavigator.Instance.NavigateTo(ScreenId.PlanDetails);
     }
 }

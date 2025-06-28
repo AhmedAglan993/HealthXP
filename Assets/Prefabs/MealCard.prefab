@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5218105403135341735}
   - component: {fileID: 1899773031160486872}
   - component: {fileID: -6484589149407915900}
+  - component: {fileID: 929906556315479265}
   m_Layer: 5
   m_Name: MealCard
   m_TagString: Untagged
@@ -164,6 +165,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mealText: {fileID: 1532336522693981568}
+--- !u!114 &929906556315479265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4909015257542866201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8411374d2a13e4923ac08d6dd45f0a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeTime: 0.3
+  onHoverAlpha: 0.6
+  onClickAlpha: 0.4
 --- !u!1 &7947492255445124039
 GameObject:
   m_ObjectHideFlags: 0

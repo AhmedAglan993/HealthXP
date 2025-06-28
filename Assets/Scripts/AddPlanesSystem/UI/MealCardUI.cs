@@ -1,4 +1,4 @@
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -10,14 +10,17 @@ public class MealCardUI : MonoBehaviour
     public TMP_InputField mealNameInput;
     public TMP_InputField macrosInput;
     public TMP_InputField recipeInput;
-
     public GameObject suggestionContainer, suggestionParent;
     public GameObject suggestionItemPrefab;
     public SmartMealSuggester suggester;
     public CleanButton saveButton;
-
     public MealCardButton mealCardButton;
     public DayCardUI currentDayCard;
+    private bool isEditable = true;
+    public string currentPlanId; // Set this when editing an existing plan
+    public string currentDayLabel; // Set this when editing an existing plan
+    public bool isEditingExistingPlan = false;
+
     public static MealCardUI Instance;
     private void Awake()
     {
@@ -31,13 +34,29 @@ public class MealCardUI : MonoBehaviour
         saveButton.onClick.AddListener(SaveMealToDayMeals);
     }
 
-    public void SetupMeal(MealCardButton dayCard, DayCardUI currentDayCard, MealEntry existing = null)
+    public void SetupMeal(
+    MealCardButton dayCard,
+    DayCardUI currentDayCard,
+    MealEntry existing = null,
+    bool editable = true,
+    string planId = null,
+    string dayLabel = null)
     {
         this.currentDayCard = currentDayCard;
-        mealCardButton = dayCard;
+        this.mealCardButton = dayCard;
+        this.isEditable = editable;
+        this.currentPlanId = planId;
+        this.currentDayLabel = dayLabel;
+        this.isEditingExistingPlan = !string.IsNullOrEmpty(planId);
+        // Set interactability based on mode
+        mealNameInput.interactable = editable;
+        macrosInput.interactable = editable;
+        recipeInput.interactable = editable;
+        mealTypeDropdown.interactable = editable;
+        saveButton.gameObject.SetActive(editable);
+
         if (existing != null)
         {
-            // Edit mode
             mealNameInput.text = existing.mealName;
             macrosInput.text = existing.macros;
             recipeInput.text = existing.recipe;
@@ -47,13 +66,16 @@ public class MealCardUI : MonoBehaviour
         }
         else
         {
-            // New meal
-            mealNameInput.text = "";
-            macrosInput.text = "";
-            recipeInput.text = "";
-            mealTypeDropdown.value = 0;
+            if (editable) // Only clear fields if it's editable (new entry)
+            {
+                mealNameInput.text = "";
+                macrosInput.text = "";
+                recipeInput.text = "";
+                mealTypeDropdown.value = 0;
+            }
         }
     }
+
 
     private void RenderSuggestions(List<MealEntry> suggestions)
     {
@@ -85,10 +107,37 @@ public class MealCardUI : MonoBehaviour
             mealType = mealTypeDropdown.options[mealTypeDropdown.value].text,
             mealName = mealNameInput.text,
             macros = macrosInput.text,
-            recipe = recipeInput.text
+            recipe = recipeInput.text,
+            mealid = string.IsNullOrEmpty(mealCardButton.mealEntry.mealid)
+                ? System.Guid.NewGuid().ToString()
+                : mealCardButton.mealEntry.mealid
         };
+
         mealCardButton.UpdateMeal(entry);
-        currentDayCard.AddMeal(entry);
-        ScreenNavigator.Instance.ClosePopup(popupId.AddMealPopUp);
+        currentDayCard?.AddMeal(entry);
+
+        // ✅ If this is editing an existing saved plan, update it in Firebase
+        if (isEditingExistingPlan)
+        {
+            string token = AuthLoginManager.Instance.CurrentUser.idToken;
+            var service = new FirestorePlanService(); // Should be renamed to RealtimePlanService
+            Instance.StartCoroutine(service.UpdateMealInPlan(
+                currentPlanId,
+                currentDayLabel,
+                entry,
+                token,
+                () =>
+                {
+                    ScreenNavigator.Instance.ClosePopup(popupId.AddMealPopUp);
+                    Debug.Log("✅ Meal updated in Firebase");
+                },
+                err => Debug.LogError("❌ Meal update failed: " + err)
+            ));
+        }
+        else
+        {
+            ScreenNavigator.Instance.ClosePopup(popupId.AddMealPopUp);
+        }
     }
+
 }

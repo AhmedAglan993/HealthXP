@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-
 public class DayCardUI : MonoBehaviour
 {
     public Transform mealButtonParent;
@@ -19,7 +17,7 @@ public class DayCardUI : MonoBehaviour
     }
     private void Start()
     {
-        addMealButton.onClick.AddListener(OpenAddMealPopup);
+        addMealButton?.onClick.AddListener(OpenAddMealPopup);
 
     }
     public PlanDay ToDayPlan()
@@ -47,5 +45,4 @@ public class DayCardUI : MonoBehaviour
         CreateMealButton(new MealEntry());
         MealCardUI.Instance.SetupMeal(currentMealCardButton, this);
     }
-   
 }

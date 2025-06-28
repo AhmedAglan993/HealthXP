@@ -1,5 +1,6 @@
 ﻿using Ricimi;
 using System.Numerics;
+using TMPro;
 using UnityEngine;
 
 public class PlanDetailsManager : MonoBehaviour
@@ -8,18 +9,21 @@ public class PlanDetailsManager : MonoBehaviour
     public GameObject dayCardPrefab;
     public CleanButton editButton;
     public CleanButton saveButton;
-
+    public TextMeshProUGUI planTitle;
+    public static PlanDetailsManager Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
     private MealPlan currentPlan;
-    private bool isEditable = false;
 
     public void Setup(MealPlan plan)
     {
         currentPlan = plan;
         RenderPlan();
-
+        planTitle.text = currentPlan.title;
         editButton.onClick.AddListener(() =>
         {
-            isEditable = true;
             saveButton.gameObject.SetActive(true);
             RenderPlan();
         });
@@ -35,7 +39,7 @@ public class PlanDetailsManager : MonoBehaviour
         foreach (var day in currentPlan.days)
         {
             var dayCard = Instantiate(dayCardPrefab, dayContainer);
-           // dayCard.GetComponent<DayCardUI>().Setup(day, isEditable);
+            dayCard.GetComponent<DayButton>().Setup(day, currentPlan.planId);
         }
     }
 
@@ -55,7 +59,6 @@ public class PlanDetailsManager : MonoBehaviour
             err => Debug.LogError("❌ Failed to save: " + err) // ✅ onError
         ));
 
-        isEditable = false;
         saveButton.gameObject.SetActive(false);
         RenderPlan();
     }

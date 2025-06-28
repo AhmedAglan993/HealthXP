@@ -10,7 +10,9 @@ public enum ScreenId
     DoctorDashboard,
     ProfileSetup,
     AddNewPlan,
-    ViewPlans
+    ViewPlans,
+    PlanDetails
+
 
 
 
@@ -25,5 +27,6 @@ public enum popupId
     ErrorPopup,
     ToastMessage,
     AddMealPopUp,
-    PlanDetails
+    DayDetails,
+    MealDetails
 }

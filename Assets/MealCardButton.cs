@@ -1,15 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class MealCardButton : MonoBehaviour
 {
-    [SerializeField] public TextMeshProUGUI mealText;
-    // Start is called before the first frame update
-    public void UpdateMeal(MealEntry newMeal)
-    {
-        mealText.text = $"{newMeal.mealType}: {newMeal.mealName} ({newMeal.macros})";
+    public TextMeshProUGUI mealText;
+    
 
+    public MealEntry mealEntry; // 🟡 Store the actual meal data
+
+    public void UpdateMeal(MealEntry meal)
+    {
+        this.mealEntry = meal;
+        mealText.text = meal.mealName;
     }
 }

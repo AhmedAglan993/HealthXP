@@ -43,9 +43,6 @@ public class PlanPreviewManager : MonoBehaviour
         {
             plan.days.Add(dayCard.ToDayPlan());
         }
-
-
-
         StartCoroutine(service.SavePlan(
             user.localId,                       // ✅ userId
             user.idToken,                       // ✅ token
@@ -54,5 +51,4 @@ public class PlanPreviewManager : MonoBehaviour
             err => Debug.LogError("❌ Failed to save: " + err) // ✅ onError
         ));
     }
-
 }
