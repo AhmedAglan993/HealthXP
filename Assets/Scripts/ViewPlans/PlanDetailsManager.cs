@@ -7,8 +7,8 @@ public class PlanDetailsManager : MonoBehaviour
 {
     public Transform dayContainer;
     public GameObject dayCardPrefab;
-    public CleanButton editButton;
-    public CleanButton saveButton;
+  //  public CleanButton editButton;
+   // public CleanButton saveButton;
     public TextMeshProUGUI planTitle;
     public static PlanDetailsManager Instance;
     private void Awake()
@@ -22,13 +22,13 @@ public class PlanDetailsManager : MonoBehaviour
         currentPlan = plan;
         RenderPlan();
         planTitle.text = currentPlan.title;
-        editButton.onClick.AddListener(() =>
+      /*  editButton.onClick.AddListener(() =>
         {
             saveButton.gameObject.SetActive(true);
             RenderPlan();
         });
 
-        saveButton.onClick.AddListener(SaveEditedPlan);
+        saveButton.onClick.AddListener(SaveEditedPlan);*/
     }
 
     private void RenderPlan()
@@ -45,8 +45,8 @@ public class PlanDetailsManager : MonoBehaviour
 
     private void SaveEditedPlan()
     {
-        var token = FirebaseAuthManager.Instance.CurrentUser.idToken;
-        var uid = FirebaseAuthManager.Instance.CurrentUser.localId;
+        var token = AuthLoginManager.Instance.CurrentUser.idToken;
+        var uid = AuthLoginManager.Instance.CurrentUser.localId;
 
         string planId = currentPlan.planId;
 
@@ -59,7 +59,7 @@ public class PlanDetailsManager : MonoBehaviour
             err => Debug.LogError("❌ Failed to save: " + err) // ✅ onError
         ));
 
-        saveButton.gameObject.SetActive(false);
+       // saveButton.gameObject.SetActive(false);
         RenderPlan();
     }
 }

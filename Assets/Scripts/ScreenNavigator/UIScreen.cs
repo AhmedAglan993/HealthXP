@@ -17,4 +17,8 @@ public class UIScreen : MonoBehaviour, IScreen
     {
         gameObject.SetActive(false);
     }
+    public void Back()
+    {
+        ScreenNavigator.Instance.GoBack();
+    }
 }

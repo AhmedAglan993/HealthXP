@@ -38,7 +38,7 @@ public class DayDetailsManager : MonoBehaviour
     public void OpenMealDetails(int id)
     {
         ScreenNavigator.Instance.ShowPopup(popupId.AddMealPopUp);
-        MealCardUI.Instance.SetupMeal(currentMealCardButton, null, allDayMealsData[id], true, currentPlanID,dayLable);
+        MealCardUI.Instance.SetupMeal(currentMealCardButton, null, allDayMealsData[id], false, currentPlanID, dayLable, true);
     }
 
 }

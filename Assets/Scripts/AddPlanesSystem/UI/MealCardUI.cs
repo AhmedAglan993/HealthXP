@@ -14,9 +14,9 @@ public class MealCardUI : MonoBehaviour
     public GameObject suggestionItemPrefab;
     public SmartMealSuggester suggester;
     public CleanButton saveButton;
+    public CleanButton editButton;
     public MealCardButton mealCardButton;
     public DayCardUI currentDayCard;
-    private bool isEditable = true;
     public string currentPlanId; // Set this when editing an existing plan
     public string currentDayLabel; // Set this when editing an existing plan
     public bool isEditingExistingPlan = false;
@@ -32,28 +32,34 @@ public class MealCardUI : MonoBehaviour
         mealNameInput.onValueChanged.AddListener(suggester.FilterSuggestions);
         mealNameInput.onSelect.AddListener(_ => suggester.FilterSuggestions(mealNameInput.text));
         saveButton.onClick.AddListener(SaveMealToDayMeals);
-    }
+        editButton.onClick.AddListener(() => EnableEditMode(true));
 
-    public void SetupMeal(
-    MealCardButton dayCard,
-    DayCardUI currentDayCard,
-    MealEntry existing = null,
-    bool editable = true,
-    string planId = null,
-    string dayLabel = null)
+    }
+    void EnableEditMode(bool editable)
     {
-        this.currentDayCard = currentDayCard;
-        this.mealCardButton = dayCard;
-        this.isEditable = editable;
-        this.currentPlanId = planId;
-        this.currentDayLabel = dayLabel;
-        this.isEditingExistingPlan = !string.IsNullOrEmpty(planId);
-        // Set interactability based on mode
-        mealNameInput.interactable = editable;
+
+        mealNameInput.text = "";
+        macrosInput.text = "";
+        recipeInput.text = "";
+        mealTypeDropdown.value = 0; mealNameInput.interactable = editable;
         macrosInput.interactable = editable;
         recipeInput.interactable = editable;
         mealTypeDropdown.interactable = editable;
         saveButton.gameObject.SetActive(editable);
+
+    }
+    public void SetupMeal(MealCardButton dayCard, DayCardUI currentDayCard, MealEntry existing = null,
+                          bool editable = true, string planId = null, string dayLabel = null, bool isEditButtonEnabled = false)
+    {
+        this.currentDayCard = currentDayCard;
+        this.mealCardButton = dayCard;
+        EnableEditMode(editable);
+        this.currentPlanId = planId;
+        this.currentDayLabel = dayLabel;
+        this.isEditingExistingPlan = !string.IsNullOrEmpty(planId);
+        editButton.gameObject.SetActive(isEditButtonEnabled);
+        // Set interactability based on mode
+
 
         if (existing != null)
         {
@@ -64,16 +70,7 @@ public class MealCardUI : MonoBehaviour
             int index = mealTypeDropdown.options.FindIndex(o => o.text == existing.mealType);
             if (index >= 0) mealTypeDropdown.value = index;
         }
-        else
-        {
-            if (editable) // Only clear fields if it's editable (new entry)
-            {
-                mealNameInput.text = "";
-                macrosInput.text = "";
-                recipeInput.text = "";
-                mealTypeDropdown.value = 0;
-            }
-        }
+
     }
 
 
