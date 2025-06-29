@@ -8,7 +8,7 @@ public class DayDetailsManager : MonoBehaviour
     public Transform mealsContainer;
     public MealCardButton mealCardPrefab;
     public static DayDetailsManager Instance;
-    MealCardButton currentMealCardButton;
+    List<MealCardButton> MealCardButtons = new List<MealCardButton>();
     public List<MealEntry> allDayMealsData;
     string currentPlanID;
     public string dayLable;
@@ -25,20 +25,20 @@ public class DayDetailsManager : MonoBehaviour
     {
         foreach (Transform child in mealsContainer)
             Destroy(child.gameObject);
-
+        MealCardButtons.Clear();
         for (int i = 0; i < allDayMealsData.Count; i++)
         {
             MealEntry mealData = allDayMealsData[i];
-            currentMealCardButton = Instantiate(mealCardPrefab, mealsContainer);
+            MealCardButtons.Add(Instantiate(mealCardPrefab, mealsContainer));
             int index = i;
-            currentMealCardButton.GetComponent<CleanButton>().onClick.AddListener(() => OpenMealDetails(index));
-            currentMealCardButton.UpdateMeal(mealData);
+            MealCardButtons[index].GetComponent<CleanButton>().onClick.AddListener(() => OpenMealDetails(index));
+            MealCardButtons[index].UpdateMeal(mealData);
         }
     }
     public void OpenMealDetails(int id)
     {
         ScreenNavigator.Instance.ShowPopup(popupId.AddMealPopUp);
-        MealCardUI.Instance.SetupMeal(currentMealCardButton, null, allDayMealsData[id], false, currentPlanID, dayLable, true);
+        MealCardUI.Instance.SetupMeal(MealCardButtons[id], null, allDayMealsData[id], false, currentPlanID, dayLable, true);
     }
 
 }

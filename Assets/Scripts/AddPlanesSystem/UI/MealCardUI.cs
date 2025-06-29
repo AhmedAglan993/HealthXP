@@ -48,11 +48,11 @@ public class MealCardUI : MonoBehaviour
         saveButton.gameObject.SetActive(editable);
 
     }
-    public void SetupMeal(MealCardButton dayCard, DayCardUI currentDayCard, MealEntry existing = null,
+    public void SetupMeal(MealCardButton mealCard, DayCardUI currentDayCard, MealEntry existing = null,
                           bool editable = true, string planId = null, string dayLabel = null, bool isEditButtonEnabled = false)
     {
         this.currentDayCard = currentDayCard;
-        this.mealCardButton = dayCard;
+        this.mealCardButton = mealCard;
         EnableEditMode(editable);
         this.currentPlanId = planId;
         this.currentDayLabel = dayLabel;
@@ -109,7 +109,7 @@ public class MealCardUI : MonoBehaviour
                 ? System.Guid.NewGuid().ToString()
                 : mealCardButton.mealEntry.mealid
         };
-
+        print(mealCardButton.mealEntry.mealid);
         mealCardButton.UpdateMeal(entry);
         currentDayCard?.AddMeal(entry);
 
@@ -126,7 +126,7 @@ public class MealCardUI : MonoBehaviour
                 () =>
                 {
                     ScreenNavigator.Instance.ClosePopup(popupId.AddMealPopUp);
-                    Debug.Log("✅ Meal updated in Firebase");
+                    Debug.Log("✅ Meal updated in Firebase: " + entry.mealName);
                 },
                 err => Debug.LogError("❌ Meal update failed: " + err)
             ));
