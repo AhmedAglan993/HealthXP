@@ -9,7 +9,7 @@ public static class FirebaseCustomAuth
 
     public static void ExchangeGoogleToken(string idToken, Action<FirebaseUserData> onSuccess, Action<string> onError)
     {
-        FirebaseAuthManager.Instance.StartCoroutine(ExchangeRoutine(idToken, onSuccess, onError));
+        AuthLoginManager.Instance.StartCoroutine(ExchangeRoutine(idToken, onSuccess, onError));
     }
 
     private static IEnumerator ExchangeRoutine(string idToken, Action<FirebaseUserData> onSuccess, Action<string> onError)

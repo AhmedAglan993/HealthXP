@@ -1,62 +1,804 @@
-{"meals":[
-  {
-    "mealType": "Breakfast",
-    "mealName": "Oatmeal with Banana",
-    "macros": "Protein: 10g, Carbs: 45g, Fats: 5g",
-    "recipe": "Cook oats with milk. Top with sliced banana and honey."
-  },
-  {
-    "mealType": "Lunch",
-    "mealName": "Grilled Chicken Salad",
-    "macros": "Protein: 35g, Carbs: 15g, Fats: 12g",
-    "recipe": "Mix greens, tomatoes, cucumbers with grilled chicken and vinaigrette."
-  },
-  {
-    "mealType": "Dinner",
-    "mealName": "Baked Salmon with Quinoa",
-    "macros": "Protein: 40g, Carbs: 30g, Fats: 18g",
-    "recipe": "Bake salmon fillet and serve with steamed quinoa and broccoli."
-  },
-  {
-    "mealType": "Snack",
-    "mealName": "Greek Yogurt with Berries",
-    "macros": "Protein: 12g, Carbs: 18g, Fats: 4g",
-    "recipe": "Top yogurt with fresh berries and a sprinkle of chia seeds."
-  },
-  {
-    "mealType": "Snack",
-    "mealName": "Peanut Butter Rice Cakes",
-    "macros": "Protein: 8g, Carbs: 20g, Fats: 10g",
-    "recipe": "Spread peanut butter on rice cakes, optionally add banana slices."
-  },
-  {
-    "mealType": "Lunch",
-    "mealName": "Tuna Sandwich",
-    "macros": "Protein: 30g, Carbs: 35g, Fats: 15g",
-    "recipe": "Mix tuna with light mayo, serve on whole grain bread with lettuce."
-  },
-  {
-    "mealType": "Dinner",
-    "mealName": "Vegetable Stir Fry with Tofu",
-    "macros": "Protein: 25g, Carbs: 40g, Fats: 10g",
-    "recipe": "Stir-fry tofu with mixed vegetables and soy sauce over brown rice."
-  },
-  {
-    "mealType": "Breakfast",
-    "mealName": "Avocado Toast with Egg",
-    "macros": "Protein: 15g, Carbs: 20g, Fats: 18g",
-    "recipe": "Toast whole grain bread, top with mashed avocado and poached egg."
-  },
-  {
-    "mealType": "Snack",
-    "mealName": "Protein Shake",
-    "macros": "Protein: 25g, Carbs: 5g, Fats: 2g",
-    "recipe": "Blend 1 scoop protein powder with almond milk and ice."
-  },
-  {
-    "mealType": "Dinner",
-    "mealName": "Chicken and Sweet Potato",
-    "macros": "Protein: 35g, Carbs: 40g, Fats: 10g",
-    "recipe": "Grill chicken breast and serve with roasted sweet potato and spinach."
-  }
-]}
+{
+  "meals": [
+    {
+      "mealid": "f9928866-8d8d-43f1-8580-9a249475a1e1",
+      "mealType": "Lunch",
+      "mealName": "Roasted Chicken with Vegetables",
+      "macros": "Protein: 44g, Carbs: 59g, Fats: 8g",
+      "recipe": "Roasted Chicken with Vegetables is prepared using healthy oils and served with vegetables.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "e9c00427-4a94-41d0-bfa0-3721497dd73f",
+      "mealType": "Lunch",
+      "mealName": "Roasted Tuna with Avocado",
+      "macros": "Protein: 25g, Carbs: 48g, Fats: 6g",
+      "recipe": "Roasted Tuna with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "Mediterranean"
+    },
+    {
+      "mealid": "526dd382-0643-4b8d-b794-a286cb7e6ee4",
+      "mealType": "Breakfast",
+      "mealName": "Boiled Beef with Avocado",
+      "macros": "Protein: 31g, Carbs: 43g, Fats: 18g",
+      "recipe": "Boiled Beef with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "High Protein"
+    },
+    {
+      "mealid": "35659fdd-54c2-4c3c-90f2-89033c35205d",
+      "mealType": "Breakfast",
+      "mealName": "Baked Eggs and Sweet Potato",
+      "macros": "Protein: 35g, Carbs: 25g, Fats: 20g",
+      "recipe": "Baked Eggs and Sweet Potato is prepared using healthy oils and served and sweet potato.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "01e21cdc-122b-4c93-ac98-7159372a20d4",
+      "mealType": "Breakfast",
+      "mealName": "Grilled Salmon with Rice",
+      "macros": "Protein: 46g, Carbs: 50g, Fats: 11g",
+      "recipe": "Grilled Salmon with Rice is prepared using healthy oils and served with rice.",
+      "category": "Vegetarian"
+    },
+    {
+      "mealid": "8f699693-e83d-4b23-90c4-4bc4255fce83",
+      "mealType": "Breakfast",
+      "mealName": "Roasted Salmon in a Bowl",
+      "macros": "Protein: 50g, Carbs: 44g, Fats: 22g",
+      "recipe": "Roasted Salmon in a Bowl is prepared using healthy oils and served in a bowl.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "eba05f2c-af16-4c2a-b3b4-49a875aa008c",
+      "mealType": "Lunch",
+      "mealName": "Grilled Tuna in a Bowl",
+      "macros": "Protein: 21g, Carbs: 18g, Fats: 13g",
+      "recipe": "Grilled Tuna in a Bowl is prepared using healthy oils and served in a bowl.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "1b2ecd95-63a7-4bc1-9ffb-c85ea35ad265",
+      "mealType": "Lunch",
+      "mealName": "Baked Salmon with Vegetables",
+      "macros": "Protein: 35g, Carbs: 39g, Fats: 15g",
+      "recipe": "Baked Salmon with Vegetables is prepared using healthy oils and served with vegetables.",
+      "category": "Vegetarian"
+    },
+    {
+      "mealid": "007dffca-aa7b-4397-b8db-83d978ff6b69",
+      "mealType": "Snack",
+      "mealName": "Baked Chicken with Avocado",
+      "macros": "Protein: 36g, Carbs: 35g, Fats: 25g",
+      "recipe": "Baked Chicken with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "Mediterranean"
+    },
+    {
+      "mealid": "7819786a-14b9-4ed4-bf24-6046b1287235",
+      "mealType": "Dinner",
+      "mealName": "Steamed Eggs with Rice",
+      "macros": "Protein: 27g, Carbs: 20g, Fats: 13g",
+      "recipe": "Steamed Eggs with Rice is prepared using healthy oils and served with rice.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "a98da295-0645-42b9-9008-1d325aea5af5",
+      "mealType": "Lunch",
+      "mealName": "Steamed Tuna with Broccoli",
+      "macros": "Protein: 14g, Carbs: 18g, Fats: 25g",
+      "recipe": "Steamed Tuna with Broccoli is prepared using healthy oils and served with broccoli.",
+      "category": "High Protein"
+    },
+    {
+      "mealid": "db58b51b-db65-4b32-8a01-ef2a19bba5c1",
+      "mealType": "Dinner",
+      "mealName": "Fried Beef and Sweet Potato",
+      "macros": "Protein: 20g, Carbs: 51g, Fats: 22g",
+      "recipe": "Fried Beef and Sweet Potato is prepared using healthy oils and served and sweet potato.",
+      "category": "Mediterranean"
+    },
+    {
+      "mealid": "19c7e8ba-22d7-402f-bc4e-5f02522bca4d",
+      "mealType": "Lunch",
+      "mealName": "Steamed Turkey with Salad",
+      "macros": "Protein: 34g, Carbs: 20g, Fats: 21g",
+      "recipe": "Steamed Turkey with Salad is prepared using healthy oils and served with salad.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "941b8840-7305-4a8f-a716-1394e49e0608",
+      "mealType": "Breakfast",
+      "mealName": "Baked Tofu in a Bowl",
+      "macros": "Protein: 43g, Carbs: 37g, Fats: 6g",
+      "recipe": "Baked Tofu in a Bowl is prepared using healthy oils and served in a bowl.",
+      "category": "High Protein"
+    },
+    {
+      "mealid": "692b13b6-8431-470d-b1de-e788aacf1147",
+      "mealType": "Lunch",
+      "mealName": "Fried Eggs and Sweet Potato",
+      "macros": "Protein: 12g, Carbs: 27g, Fats: 5g",
+      "recipe": "Fried Eggs and Sweet Potato is prepared using healthy oils and served and sweet potato.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "e2bbbc90-8486-40b8-91d8-6c01038b0eef",
+      "mealType": "Dinner",
+      "mealName": "Steamed Lentils with Avocado",
+      "macros": "Protein: 27g, Carbs: 10g, Fats: 18g",
+      "recipe": "Steamed Lentils with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "Low Carb"
+    },
+    {
+      "mealid": "f5cf9eec-6f4b-4287-af8b-03b161534165",
+      "mealType": "Dinner",
+      "mealName": "Fried Salmon in a Bowl",
+      "macros": "Protein: 25g, Carbs: 48g, Fats: 18g",
+      "recipe": "Fried Salmon in a Bowl is prepared using healthy oils and served in a bowl.",
+      "category": "High Protein"
+    },
+    {
+      "mealid": "d2e623b1-fdad-4957-8d11-b5d0b2deb3e7",
+      "mealType": "Snack",
+      "mealName": "Steamed Oats with Broccoli",
+      "macros": "Protein: 14g, Carbs: 19g, Fats: 7g",
+      "recipe": "Steamed Oats with Broccoli is prepared using healthy oils and served with broccoli.",
+      "category": "Mediterranean"
+    },
+    {
+      "mealid": "978f8288-fec0-4052-8776-1e4baa221732",
+      "mealType": "Dinner",
+      "mealName": "Fried Quinoa with Broccoli",
+      "macros": "Protein: 32g, Carbs: 58g, Fats: 7g",
+      "recipe": "Fried Quinoa with Broccoli is prepared using healthy oils and served with broccoli.",
+      "category": "Mediterranean"
+    },
+    {
+      "mealid": "94ea07be-93ee-4533-b209-a7536d0e3fa5",
+      "mealType": "Breakfast",
+      "mealName": "Baked Lentils with Avocado",
+      "macros": "Protein: 26g, Carbs: 59g, Fats: 14g",
+      "recipe": "Baked Lentils with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "4aa36548-ae68-4017-a977-7c54416b1b26",
+      "mealType": "Lunch",
+      "mealName": "Fried Turkey in a Bowl",
+      "macros": "Protein: 38g, Carbs: 55g, Fats: 25g",
+      "recipe": "Fried Turkey in a Bowl is prepared using healthy oils and served in a bowl.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "41c4fae8-f187-4645-baa2-627ab808339b",
+      "mealType": "Snack",
+      "mealName": "Steamed Tuna with Avocado",
+      "macros": "Protein: 23g, Carbs: 17g, Fats: 11g",
+      "recipe": "Steamed Tuna with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "Keto"
+    },
+    {
+      "mealid": "5e9de704-f5fc-407d-8f95-731cb5d75d91",
+      "mealType": "Snack",
+      "mealName": "Steamed Quinoa and Sweet Potato",
+      "macros": "Protein: 39g, Carbs: 49g, Fats: 20g",
+      "recipe": "Steamed Quinoa and Sweet Potato is prepared using healthy oils and served and sweet potato.",
+      "category": "Keto"
+    },
+    {
+      "mealid": "c8fb8fdf-6a59-4b35-aaa3-948b5d96c2d7",
+      "mealType": "Lunch",
+      "mealName": "Roasted Tofu with Rice",
+      "macros": "Protein: 14g, Carbs: 33g, Fats: 6g",
+      "recipe": "Roasted Tofu with Rice is prepared using healthy oils and served with rice.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "c1196b11-ce64-4d2a-a94b-bde475be7cd3",
+      "mealType": "Dinner",
+      "mealName": "Roasted Turkey with Salad",
+      "macros": "Protein: 47g, Carbs: 6g, Fats: 8g",
+      "recipe": "Roasted Turkey with Salad is prepared using healthy oils and served with salad.",
+      "category": "Keto"
+    },
+    {
+      "mealid": "7399ccb7-ef1b-4a8e-8ef1-4dc0af142fb2",
+      "mealType": "Snack",
+      "mealName": "Boiled Oats with Vegetables",
+      "macros": "Protein: 45g, Carbs: 41g, Fats: 6g",
+      "recipe": "Boiled Oats with Vegetables is prepared using healthy oils and served with vegetables.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "566ffa61-3a0f-4ba1-83b6-cc6718e546c4",
+      "mealType": "Lunch",
+      "mealName": "Steamed Eggs with Broccoli",
+      "macros": "Protein: 18g, Carbs: 22g, Fats: 9g",
+      "recipe": "Steamed Eggs with Broccoli is prepared using healthy oils and served with broccoli.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "7f24a91b-9bf7-4143-8bdd-7d2288706ca5",
+      "mealType": "Dinner",
+      "mealName": "Grilled Salmon with Vegetables",
+      "macros": "Protein: 27g, Carbs: 26g, Fats: 24g",
+      "recipe": "Grilled Salmon with Vegetables is prepared using healthy oils and served with vegetables.",
+      "category": "Low Carb"
+    },
+    {
+      "mealid": "729190da-5914-483e-987b-9114a67cfc0b",
+      "mealType": "Lunch",
+      "mealName": "Steamed Quinoa with Rice",
+      "macros": "Protein: 38g, Carbs: 11g, Fats: 15g",
+      "recipe": "Steamed Quinoa with Rice is prepared using healthy oils and served with rice.",
+      "category": "Low Carb"
+    },
+    {
+      "mealid": "c389a6f7-91d4-49c1-b175-63dd8bee14da",
+      "mealType": "Breakfast",
+      "mealName": "Grilled Lentils with Salad",
+      "macros": "Protein: 30g, Carbs: 57g, Fats: 19g",
+      "recipe": "Grilled Lentils with Salad is prepared using healthy oils and served with salad.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "969db43f-2831-4459-a74c-417f872c5c12",
+      "mealType": "Snack",
+      "mealName": "Steamed Lentils with Vegetables",
+      "macros": "Protein: 45g, Carbs: 58g, Fats: 9g",
+      "recipe": "Steamed Lentils with Vegetables is prepared using healthy oils and served with vegetables.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "61e7bdaf-6d84-4d5c-9e35-685a14ce1368",
+      "mealType": "Lunch",
+      "mealName": "Boiled Oats with Broccoli",
+      "macros": "Protein: 15g, Carbs: 11g, Fats: 16g",
+      "recipe": "Boiled Oats with Broccoli is prepared using healthy oils and served with broccoli.",
+      "category": "Vegetarian"
+    },
+    {
+      "mealid": "b60d8f50-3c93-49e6-8c7f-b34bb568f49e",
+      "mealType": "Dinner",
+      "mealName": "Grilled Quinoa with Salad",
+      "macros": "Protein: 38g, Carbs: 37g, Fats: 15g",
+      "recipe": "Grilled Quinoa with Salad is prepared using healthy oils and served with salad.",
+      "category": "High Protein"
+    },
+    {
+      "mealid": "1fabb5ce-8061-4a5c-883c-7cc575a9934c",
+      "mealType": "Snack",
+      "mealName": "Fried Oats and Sweet Potato",
+      "macros": "Protein: 20g, Carbs: 26g, Fats: 13g",
+      "recipe": "Fried Oats and Sweet Potato is prepared using healthy oils and served and sweet potato.",
+      "category": "Low Carb"
+    },
+    {
+      "mealid": "698eab56-bc80-4746-a42a-835f145313c0",
+      "mealType": "Lunch",
+      "mealName": "Baked Salmon and Sweet Potato",
+      "macros": "Protein: 33g, Carbs: 47g, Fats: 10g",
+      "recipe": "Baked Salmon and Sweet Potato is prepared using healthy oils and served and sweet potato.",
+      "category": "Mediterranean"
+    },
+    {
+      "mealid": "85026d11-a7c8-41e9-932f-77925a76b6ad",
+      "mealType": "Snack",
+      "mealName": "Fried Turkey with Rice",
+      "macros": "Protein: 24g, Carbs: 30g, Fats: 16g",
+      "recipe": "Fried Turkey with Rice is prepared using healthy oils and served with rice.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "3a0c8e57-0670-4c4f-a4a2-c594fad278b5",
+      "mealType": "Lunch",
+      "mealName": "Grilled Lentils with Rice",
+      "macros": "Protein: 38g, Carbs: 44g, Fats: 23g",
+      "recipe": "Grilled Lentils with Rice is prepared using healthy oils and served with rice.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "3ef33731-5695-4fd2-92d2-72d46f8dcdf6",
+      "mealType": "Snack",
+      "mealName": "Baked Oats with Vegetables",
+      "macros": "Protein: 10g, Carbs: 52g, Fats: 22g",
+      "recipe": "Baked Oats with Vegetables is prepared using healthy oils and served with vegetables.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "e34a9029-7944-48b4-be04-d01e28e193d0",
+      "mealType": "Lunch",
+      "mealName": "Roasted Chicken with Broccoli",
+      "macros": "Protein: 13g, Carbs: 37g, Fats: 13g",
+      "recipe": "Roasted Chicken with Broccoli is prepared using healthy oils and served with broccoli.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "1a73c59a-c83c-4f8a-9acc-2687dc5a01a2",
+      "mealType": "Breakfast",
+      "mealName": "Baked Eggs with Salad",
+      "macros": "Protein: 29g, Carbs: 42g, Fats: 18g",
+      "recipe": "Baked Eggs with Salad is prepared using healthy oils and served with salad.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "56044eac-39b2-4234-ad0f-30a41c50da68",
+      "mealType": "Dinner",
+      "mealName": "Boiled Salmon with Broccoli",
+      "macros": "Protein: 47g, Carbs: 43g, Fats: 14g",
+      "recipe": "Boiled Salmon with Broccoli is prepared using healthy oils and served with broccoli.",
+      "category": "Mediterranean"
+    },
+    {
+      "mealid": "739b2119-ca60-4cd4-bad0-641f514f42aa",
+      "mealType": "Snack",
+      "mealName": "Baked Salmon with Salad",
+      "macros": "Protein: 39g, Carbs: 31g, Fats: 6g",
+      "recipe": "Baked Salmon with Salad is prepared using healthy oils and served with salad.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "b6d2ca3d-48d4-446d-9745-6a08dc8e2dd6",
+      "mealType": "Snack",
+      "mealName": "Boiled Tofu with Vegetables",
+      "macros": "Protein: 32g, Carbs: 54g, Fats: 10g",
+      "recipe": "Boiled Tofu with Vegetables is prepared using healthy oils and served with vegetables.",
+      "category": "Mediterranean"
+    },
+    {
+      "mealid": "ec2f2f60-8e56-42e3-b8bc-090a7625ad3a",
+      "mealType": "Lunch",
+      "mealName": "Baked Salmon with Salad",
+      "macros": "Protein: 39g, Carbs: 27g, Fats: 6g",
+      "recipe": "Baked Salmon with Salad is prepared using healthy oils and served with salad.",
+      "category": "High Protein"
+    },
+    {
+      "mealid": "b8ba0080-0b39-4157-b088-41d7fac2b9e6",
+      "mealType": "Breakfast",
+      "mealName": "Fried Beef with Broccoli",
+      "macros": "Protein: 40g, Carbs: 8g, Fats: 21g",
+      "recipe": "Fried Beef with Broccoli is prepared using healthy oils and served with broccoli.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "e5982c5c-227d-4a8b-afe6-79213cf9cd2c",
+      "mealType": "Lunch",
+      "mealName": "Grilled Chicken with Rice",
+      "macros": "Protein: 15g, Carbs: 52g, Fats: 8g",
+      "recipe": "Grilled Chicken with Rice is prepared using healthy oils and served with rice.",
+      "category": "Keto"
+    },
+    {
+      "mealid": "a6a71b53-dc0b-4558-ad3d-134749ff2633",
+      "mealType": "Lunch",
+      "mealName": "Steamed Tofu and Sweet Potato",
+      "macros": "Protein: 39g, Carbs: 33g, Fats: 17g",
+      "recipe": "Steamed Tofu and Sweet Potato is prepared using healthy oils and served and sweet potato.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "b9252ce6-44ef-4d21-a171-d16fb51e295b",
+      "mealType": "Snack",
+      "mealName": "Steamed Beef with Avocado",
+      "macros": "Protein: 19g, Carbs: 58g, Fats: 19g",
+      "recipe": "Steamed Beef with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "576a9571-a057-4d67-9367-709067da87c0",
+      "mealType": "Dinner",
+      "mealName": "Baked Lentils and Sweet Potato",
+      "macros": "Protein: 12g, Carbs: 58g, Fats: 12g",
+      "recipe": "Baked Lentils and Sweet Potato is prepared using healthy oils and served and sweet potato.",
+      "category": "Mediterranean"
+    },
+    {
+      "mealid": "18055aeb-e031-4279-b57d-06a1a060c742",
+      "mealType": "Lunch",
+      "mealName": "Roasted Tuna with Rice",
+      "macros": "Protein: 17g, Carbs: 44g, Fats: 13g",
+      "recipe": "Roasted Tuna with Rice is prepared using healthy oils and served with rice.",
+      "category": "Keto"
+    },
+    {
+      "mealid": "25b67f29-4050-4806-8aa1-888f45e2e876",
+      "mealType": "Snack",
+      "mealName": "Baked Eggs and Sweet Potato",
+      "macros": "Protein: 29g, Carbs: 9g, Fats: 20g",
+      "recipe": "Baked Eggs and Sweet Potato is prepared using healthy oils and served and sweet potato.",
+      "category": "Low Carb"
+    },
+    {
+      "mealid": "ac87ea46-68c8-4f30-8e74-9b0eea6c360d",
+      "mealType": "Dinner",
+      "mealName": "Fried Tuna with Avocado",
+      "macros": "Protein: 40g, Carbs: 49g, Fats: 7g",
+      "recipe": "Fried Tuna with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "Low Carb"
+    },
+    {
+      "mealid": "c7fec05f-6b08-4c2c-93f6-8897ff3ab3b2",
+      "mealType": "Dinner",
+      "mealName": "Steamed Beef with Broccoli",
+      "macros": "Protein: 32g, Carbs: 38g, Fats: 16g",
+      "recipe": "Steamed Beef with Broccoli is prepared using healthy oils and served with broccoli.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "9cd5171d-e815-4a22-aa30-c78ef06abc18",
+      "mealType": "Breakfast",
+      "mealName": "Steamed Tofu in a Bowl",
+      "macros": "Protein: 30g, Carbs: 21g, Fats: 6g",
+      "recipe": "Steamed Tofu in a Bowl is prepared using healthy oils and served in a bowl.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "b0269ec0-ec2a-45ed-b157-dcab519139de",
+      "mealType": "Snack",
+      "mealName": "Roasted Salmon with Vegetables",
+      "macros": "Protein: 39g, Carbs: 17g, Fats: 24g",
+      "recipe": "Roasted Salmon with Vegetables is prepared using healthy oils and served with vegetables.",
+      "category": "Vegetarian"
+    },
+    {
+      "mealid": "85212d33-9cb6-4f22-a17b-bd8067fbc88e",
+      "mealType": "Snack",
+      "mealName": "Fried Tofu in a Bowl",
+      "macros": "Protein: 38g, Carbs: 20g, Fats: 24g",
+      "recipe": "Fried Tofu in a Bowl is prepared using healthy oils and served in a bowl.",
+      "category": "High Protein"
+    },
+    {
+      "mealid": "4f704362-14f8-4ff1-8969-22767907242e",
+      "mealType": "Snack",
+      "mealName": "Steamed Lentils and Sweet Potato",
+      "macros": "Protein: 31g, Carbs: 57g, Fats: 17g",
+      "recipe": "Steamed Lentils and Sweet Potato is prepared using healthy oils and served and sweet potato.",
+      "category": "Low Carb"
+    },
+    {
+      "mealid": "e03f79a8-a15b-4dbc-8859-04a207041cdd",
+      "mealType": "Lunch",
+      "mealName": "Grilled Tuna with Broccoli",
+      "macros": "Protein: 11g, Carbs: 20g, Fats: 10g",
+      "recipe": "Grilled Tuna with Broccoli is prepared using healthy oils and served with broccoli.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "c5a0962d-5e7c-4f8e-95c3-7f5dfe055b51",
+      "mealType": "Breakfast",
+      "mealName": "Grilled Turkey and Sweet Potato",
+      "macros": "Protein: 28g, Carbs: 6g, Fats: 12g",
+      "recipe": "Grilled Turkey and Sweet Potato is prepared using healthy oils and served and sweet potato.",
+      "category": "High Protein"
+    },
+    {
+      "mealid": "d9ef1c1e-ee79-4ee7-a72f-b85828fd8405",
+      "mealType": "Breakfast",
+      "mealName": "Grilled Tofu with Rice",
+      "macros": "Protein: 49g, Carbs: 42g, Fats: 23g",
+      "recipe": "Grilled Tofu with Rice is prepared using healthy oils and served with rice.",
+      "category": "Mediterranean"
+    },
+    {
+      "mealid": "e03db2b7-462f-4a01-8816-04fd35932307",
+      "mealType": "Dinner",
+      "mealName": "Steamed Turkey with Broccoli",
+      "macros": "Protein: 35g, Carbs: 24g, Fats: 15g",
+      "recipe": "Steamed Turkey with Broccoli is prepared using healthy oils and served with broccoli.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "2b679b29-7f3c-4b53-91da-1522a3d208e0",
+      "mealType": "Breakfast",
+      "mealName": "Baked Eggs with Salad",
+      "macros": "Protein: 39g, Carbs: 18g, Fats: 5g",
+      "recipe": "Baked Eggs with Salad is prepared using healthy oils and served with salad.",
+      "category": "Vegetarian"
+    },
+    {
+      "mealid": "04f59556-cf3b-4e19-92cb-bc3d8c4e2e4a",
+      "mealType": "Breakfast",
+      "mealName": "Steamed Lentils with Broccoli",
+      "macros": "Protein: 19g, Carbs: 8g, Fats: 9g",
+      "recipe": "Steamed Lentils with Broccoli is prepared using healthy oils and served with broccoli.",
+      "category": "Vegetarian"
+    },
+    {
+      "mealid": "16310a5d-2d9b-4086-9492-4228889f5ef0",
+      "mealType": "Lunch",
+      "mealName": "Boiled Tuna with Avocado",
+      "macros": "Protein: 33g, Carbs: 24g, Fats: 20g",
+      "recipe": "Boiled Tuna with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "c6c9d955-7de5-4dbe-8882-c1d7c12ce1c6",
+      "mealType": "Breakfast",
+      "mealName": "Baked Tuna with Avocado",
+      "macros": "Protein: 20g, Carbs: 12g, Fats: 11g",
+      "recipe": "Baked Tuna with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "Keto"
+    },
+    {
+      "mealid": "b02dece9-590d-4a21-85f5-3b6d956c26be",
+      "mealType": "Dinner",
+      "mealName": "Grilled Quinoa with Avocado",
+      "macros": "Protein: 33g, Carbs: 44g, Fats: 9g",
+      "recipe": "Grilled Quinoa with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "Vegetarian"
+    },
+    {
+      "mealid": "d77ce7f1-109f-40a5-8cfd-4176abd08f73",
+      "mealType": "Snack",
+      "mealName": "Grilled Turkey in a Bowl",
+      "macros": "Protein: 20g, Carbs: 11g, Fats: 23g",
+      "recipe": "Grilled Turkey in a Bowl is prepared using healthy oils and served in a bowl.",
+      "category": "Vegetarian"
+    },
+    {
+      "mealid": "fed26540-2f11-4859-9bee-b642760c9686",
+      "mealType": "Breakfast",
+      "mealName": "Baked Salmon with Rice",
+      "macros": "Protein: 40g, Carbs: 39g, Fats: 10g",
+      "recipe": "Baked Salmon with Rice is prepared using healthy oils and served with rice.",
+      "category": "Low Carb"
+    },
+    {
+      "mealid": "d42a50ac-f6bb-42db-9568-32510c3a2c4d",
+      "mealType": "Breakfast",
+      "mealName": "Boiled Tofu with Vegetables",
+      "macros": "Protein: 28g, Carbs: 10g, Fats: 8g",
+      "recipe": "Boiled Tofu with Vegetables is prepared using healthy oils and served with vegetables.",
+      "category": "Low Carb"
+    },
+    {
+      "mealid": "95b2c368-a86f-4b44-b743-ef48d63dd76c",
+      "mealType": "Dinner",
+      "mealName": "Fried Oats with Rice",
+      "macros": "Protein: 25g, Carbs: 46g, Fats: 9g",
+      "recipe": "Fried Oats with Rice is prepared using healthy oils and served with rice.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "acf6310f-3712-433c-915e-f270bd85468c",
+      "mealType": "Breakfast",
+      "mealName": "Steamed Salmon with Rice",
+      "macros": "Protein: 35g, Carbs: 7g, Fats: 15g",
+      "recipe": "Steamed Salmon with Rice is prepared using healthy oils and served with rice.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "4b3ef7c6-afda-4133-ad33-16c11e0b6326",
+      "mealType": "Dinner",
+      "mealName": "Steamed Chicken with Salad",
+      "macros": "Protein: 43g, Carbs: 24g, Fats: 9g",
+      "recipe": "Steamed Chicken with Salad is prepared using healthy oils and served with salad.",
+      "category": "High Protein"
+    },
+    {
+      "mealid": "87184008-3e86-4eb2-845c-a6568442e9e3",
+      "mealType": "Dinner",
+      "mealName": "Grilled Turkey with Broccoli",
+      "macros": "Protein: 36g, Carbs: 10g, Fats: 5g",
+      "recipe": "Grilled Turkey with Broccoli is prepared using healthy oils and served with broccoli.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "818f1e94-32c3-49f8-bd5c-ce2d984cb34f",
+      "mealType": "Snack",
+      "mealName": "Grilled Oats with Avocado",
+      "macros": "Protein: 31g, Carbs: 11g, Fats: 19g",
+      "recipe": "Grilled Oats with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "46dd2e32-3098-4835-b689-4c62378eb966",
+      "mealType": "Lunch",
+      "mealName": "Roasted Tuna in a Bowl",
+      "macros": "Protein: 14g, Carbs: 58g, Fats: 14g",
+      "recipe": "Roasted Tuna in a Bowl is prepared using healthy oils and served in a bowl.",
+      "category": "Mediterranean"
+    },
+    {
+      "mealid": "560c943e-6dfb-41d1-8378-13e85730befb",
+      "mealType": "Snack",
+      "mealName": "Baked Turkey with Avocado",
+      "macros": "Protein: 48g, Carbs: 26g, Fats: 14g",
+      "recipe": "Baked Turkey with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "Vegetarian"
+    },
+    {
+      "mealid": "74e336af-a529-4012-9eb8-6de4074905d4",
+      "mealType": "Dinner",
+      "mealName": "Fried Lentils with Rice",
+      "macros": "Protein: 25g, Carbs: 19g, Fats: 6g",
+      "recipe": "Fried Lentils with Rice is prepared using healthy oils and served with rice.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "2afd69bf-e059-4a89-9387-12ab1bca5441",
+      "mealType": "Dinner",
+      "mealName": "Steamed Chicken with Rice",
+      "macros": "Protein: 25g, Carbs: 42g, Fats: 14g",
+      "recipe": "Steamed Chicken with Rice is prepared using healthy oils and served with rice.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "0f23d352-3c7e-409f-a82c-74ad10c47a1b",
+      "mealType": "Snack",
+      "mealName": "Steamed Quinoa with Avocado",
+      "macros": "Protein: 10g, Carbs: 21g, Fats: 17g",
+      "recipe": "Steamed Quinoa with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "Vegetarian"
+    },
+    {
+      "mealid": "d82c5fa7-22bf-4444-8403-c4ae8442c365",
+      "mealType": "Breakfast",
+      "mealName": "Fried Tofu with Rice",
+      "macros": "Protein: 36g, Carbs: 46g, Fats: 22g",
+      "recipe": "Fried Tofu with Rice is prepared using healthy oils and served with rice.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "1eeec8f3-5801-4dd8-b662-0bb80b04d284",
+      "mealType": "Snack",
+      "mealName": "Baked Eggs with Avocado",
+      "macros": "Protein: 46g, Carbs: 51g, Fats: 17g",
+      "recipe": "Baked Eggs with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "High Protein"
+    },
+    {
+      "mealid": "5e6e0c2e-a230-45d2-ade5-a322edf61347",
+      "mealType": "Breakfast",
+      "mealName": "Grilled Chicken with Vegetables",
+      "macros": "Protein: 30g, Carbs: 47g, Fats: 12g",
+      "recipe": "Grilled Chicken with Vegetables is prepared using healthy oils and served with vegetables.",
+      "category": "Vegetarian"
+    },
+    {
+      "mealid": "18f0b4f6-a186-45b2-a442-788218acf09d",
+      "mealType": "Snack",
+      "mealName": "Grilled Quinoa with Rice",
+      "macros": "Protein: 33g, Carbs: 27g, Fats: 7g",
+      "recipe": "Grilled Quinoa with Rice is prepared using healthy oils and served with rice.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "f726463f-1b6b-4897-a304-5545d4a9a9bf",
+      "mealType": "Breakfast",
+      "mealName": "Boiled Turkey with Avocado",
+      "macros": "Protein: 14g, Carbs: 11g, Fats: 6g",
+      "recipe": "Boiled Turkey with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "Mediterranean"
+    },
+    {
+      "mealid": "e6b6097c-f6dc-48f1-8c8e-d570788dd2f8",
+      "mealType": "Breakfast",
+      "mealName": "Steamed Eggs with Broccoli",
+      "macros": "Protein: 28g, Carbs: 42g, Fats: 13g",
+      "recipe": "Steamed Eggs with Broccoli is prepared using healthy oils and served with broccoli.",
+      "category": "Vegetarian"
+    },
+    {
+      "mealid": "92809c16-9fff-4e26-be21-9062df6c80da",
+      "mealType": "Snack",
+      "mealName": "Baked Tofu in a Bowl",
+      "macros": "Protein: 50g, Carbs: 58g, Fats: 8g",
+      "recipe": "Baked Tofu in a Bowl is prepared using healthy oils and served in a bowl.",
+      "category": "High Protein"
+    },
+    {
+      "mealid": "c00042d6-93ba-4b22-b5e2-2513a9902b18",
+      "mealType": "Dinner",
+      "mealName": "Steamed Quinoa and Sweet Potato",
+      "macros": "Protein: 31g, Carbs: 34g, Fats: 13g",
+      "recipe": "Steamed Quinoa and Sweet Potato is prepared using healthy oils and served and sweet potato.",
+      "category": "Keto"
+    },
+    {
+      "mealid": "9c65547c-c37b-4037-bedc-5cf6f2fe478b",
+      "mealType": "Lunch",
+      "mealName": "Roasted Salmon with Salad",
+      "macros": "Protein: 32g, Carbs: 17g, Fats: 21g",
+      "recipe": "Roasted Salmon with Salad is prepared using healthy oils and served with salad.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "4a152512-e306-43f1-97db-d3d44626ff84",
+      "mealType": "Lunch",
+      "mealName": "Boiled Beef with Vegetables",
+      "macros": "Protein: 31g, Carbs: 18g, Fats: 21g",
+      "recipe": "Boiled Beef with Vegetables is prepared using healthy oils and served with vegetables.",
+      "category": "Mediterranean"
+    },
+    {
+      "mealid": "2ee0b9b7-c477-4c5e-abf8-11bbbdc4afd5",
+      "mealType": "Snack",
+      "mealName": "Grilled Tofu with Rice",
+      "macros": "Protein: 22g, Carbs: 51g, Fats: 17g",
+      "recipe": "Grilled Tofu with Rice is prepared using healthy oils and served with rice.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "6c36b48f-1f66-4fe1-beda-e561a8574f56",
+      "mealType": "Lunch",
+      "mealName": "Fried Quinoa with Avocado",
+      "macros": "Protein: 30g, Carbs: 26g, Fats: 8g",
+      "recipe": "Fried Quinoa with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "Keto"
+    },
+    {
+      "mealid": "d2bf22f6-c6a3-4127-b6f3-8c34a0e00a69",
+      "mealType": "Snack",
+      "mealName": "Boiled Turkey with Broccoli",
+      "macros": "Protein: 26g, Carbs: 5g, Fats: 16g",
+      "recipe": "Boiled Turkey with Broccoli is prepared using healthy oils and served with broccoli.",
+      "category": "Mediterranean"
+    },
+    {
+      "mealid": "009305aa-e76d-423b-ac68-5da22e887796",
+      "mealType": "Dinner",
+      "mealName": "Baked Salmon with Avocado",
+      "macros": "Protein: 31g, Carbs: 48g, Fats: 25g",
+      "recipe": "Baked Salmon with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "Vegan"
+    },
+    {
+      "mealid": "7c6af693-218b-4475-b9aa-5058bcba92f7",
+      "mealType": "Dinner",
+      "mealName": "Fried Turkey in a Bowl",
+      "macros": "Protein: 34g, Carbs: 25g, Fats: 14g",
+      "recipe": "Fried Turkey in a Bowl is prepared using healthy oils and served in a bowl.",
+      "category": "Mediterranean"
+    },
+    {
+      "mealid": "a4f61d08-368f-4a85-8cd5-b2420b7571d1",
+      "mealType": "Lunch",
+      "mealName": "Fried Oats with Broccoli",
+      "macros": "Protein: 31g, Carbs: 50g, Fats: 7g",
+      "recipe": "Fried Oats with Broccoli is prepared using healthy oils and served with broccoli.",
+      "category": "High Protein"
+    },
+    {
+      "mealid": "6badd365-adfd-4100-bffa-7b9991f60ea0",
+      "mealType": "Snack",
+      "mealName": "Boiled Eggs and Sweet Potato",
+      "macros": "Protein: 39g, Carbs: 8g, Fats: 22g",
+      "recipe": "Boiled Eggs and Sweet Potato is prepared using healthy oils and served and sweet potato.",
+      "category": "High Protein"
+    },
+    {
+      "mealid": "2b7f8d85-12e0-4ad6-8de1-6a3a476982c7",
+      "mealType": "Snack",
+      "mealName": "Steamed Tuna with Vegetables",
+      "macros": "Protein: 43g, Carbs: 43g, Fats: 15g",
+      "recipe": "Steamed Tuna with Vegetables is prepared using healthy oils and served with vegetables.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "ebf32c47-5797-4026-baf5-272e702edc0f",
+      "mealType": "Snack",
+      "mealName": "Grilled Eggs with Salad",
+      "macros": "Protein: 28g, Carbs: 46g, Fats: 23g",
+      "recipe": "Grilled Eggs with Salad is prepared using healthy oils and served with salad.",
+      "category": "Paleo"
+    },
+    {
+      "mealid": "24ea19b0-d103-4544-be35-8b5ed093439d",
+      "mealType": "Snack",
+      "mealName": "Steamed Tofu with Vegetables",
+      "macros": "Protein: 34g, Carbs: 39g, Fats: 18g",
+      "recipe": "Steamed Tofu with Vegetables is prepared using healthy oils and served with vegetables.",
+      "category": "Vegetarian"
+    },
+    {
+      "mealid": "502aa29b-7fb9-4541-8cbd-9ba71ebc0663",
+      "mealType": "Lunch",
+      "mealName": "Grilled Tofu with Avocado",
+      "macros": "Protein: 42g, Carbs: 21g, Fats: 22g",
+      "recipe": "Grilled Tofu with Avocado is prepared using healthy oils and served with avocado.",
+      "category": "Vegan"
+    }
+  ]
+}

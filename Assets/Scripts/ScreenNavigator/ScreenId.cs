@@ -11,7 +11,8 @@ public enum ScreenId
     ProfileSetup,
     AddNewPlan,
     ViewPlans,
-    PlanDetails
+    PlanDetails,
+    Meals
 
 
 
